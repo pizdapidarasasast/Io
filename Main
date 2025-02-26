@@ -1,0 +1,577 @@
+-- Client Script (StarterPlayer/StarterPlayerScripts or similar) - NO SERVER SCRIPT NEEDED
+
+-- --- SERVICES ---
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CoreGui = game:GetService("CoreGui")
+
+-- --- PLAYER ---
+local player = Players.LocalPlayer
+
+-- --- UI ELEMENTS (Using names from the Converted table) ---
+
+local Converted = {
+	["_GUI"] = Instance.new("ScreenGui"),
+	["_Main"] = Instance.new("Frame"),
+	["_UICorner"] = Instance.new("UICorner"),
+	["_Tab1"] = Instance.new("Frame"),
+	["_UIListLayout"] = Instance.new("UIListLayout"),
+	["_ButtonFrame"] = Instance.new("Frame"),
+	["_UICorner1"] = Instance.new("UICorner"),
+	["_ButtonsMainFrame"] = Instance.new("Frame"),
+	["_UIListLayout1"] = Instance.new("UIListLayout"),
+	["_Store"] = Instance.new("TextButton"),
+	["_UICorner2"] = Instance.new("UICorner"),
+	["_EnterItem"] = Instance.new("TextBox"),
+	["_UICorner3"] = Instance.new("UICorner"),
+	["_StoreAllItems"] = Instance.new("TextButton"),
+	["_UICorner4"] = Instance.new("UICorner"),
+	["_ButtonFrame1"] = Instance.new("Frame"),
+	["_UICorner5"] = Instance.new("UICorner"),
+	["_ButtonsMainFrame1"] = Instance.new("Frame"),
+	["_UIListLayout2"] = Instance.new("UIListLayout"),
+	["_TeleportItemToMe"] = Instance.new("TextButton"),
+	["_UICorner6"] = Instance.new("UICorner"),
+	["_EnterItem1"] = Instance.new("TextBox"),
+	["_UICorner7"] = Instance.new("UICorner"),
+	["_TeleportAllItemsToMe"] = Instance.new("TextButton"),
+	["_UICorner8"] = Instance.new("UICorner"),
+	["_ChooseTab"] = Instance.new("Frame"),
+	["_UICorner9"] = Instance.new("UICorner"),
+	["_Blur"] = Instance.new("ImageLabel"),
+	["_UICorner10"] = Instance.new("UICorner"),
+	["_ClickOn"] = Instance.new("Frame"),
+	["_Tab11"] = Instance.new("ImageLabel"),
+	["_UIListLayout3"] = Instance.new("UIListLayout"),
+	["_Tab2"] = Instance.new("ImageLabel"),
+	["_Tab3"] = Instance.new("ImageLabel"),
+	["_Tab4"] = Instance.new("ImageLabel"),
+	["_Tab5"] = Instance.new("ImageLabel"),
+	["_Tab6"] = Instance.new("ImageLabel"),
+	["_Tab7"] = Instance.new("ImageLabel"),
+	["_Tab8"] = Instance.new("ImageLabel"),
+	["_Blur1"] = Instance.new("ImageLabel"),
+	["_UICorner11"] = Instance.new("UICorner"),
+	["_Close"] = Instance.new("TextButton"),
+	["_Blur2"] = Instance.new("ImageLabel"),
+	["_UICorner12"] = Instance.new("UICorner"),
+	["_UICorner13"] = Instance.new("UICorner"),
+	["_UIAspectRatioConstraint"] = Instance.new("UIAspectRatioConstraint"),
+}
+
+-- --- PROPERTIES ---
+
+Converted["_GUI"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Converted["_GUI"].Name = "GUI"
+Converted["_GUI"].Parent = CoreGui
+
+Converted["_Main"].BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Converted["_Main"].BackgroundTransparency = 0.35
+Converted["_Main"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Main"].BorderSizePixel = 0
+Converted["_Main"].Position = UDim2.new(0.3178, 0, 0.1981, 0)
+Converted["_Main"].Size = UDim2.new(0.3635, 0, 0.6015, 0)
+Converted["_Main"].Name = "Main"
+Converted["_Main"].Parent = Converted["_GUI"]
+
+Converted["_UICorner"].CornerRadius = UDim.new(0.1, 0)
+Converted["_UICorner"].Parent = Converted["_Main"]
+
+Converted["_Tab1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Tab1"].BackgroundTransparency = 1
+Converted["_Tab1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Tab1"].BorderSizePixel = 0
+Converted["_Tab1"].Position = UDim2.new(0.0352, 0, 0.0366, 0)
+Converted["_Tab1"].Size = UDim2.new(0.398, 0, 0.9261, 0)
+Converted["_Tab1"].Name = "Tab1"
+Converted["_Tab1"].Parent = Converted["_Main"]
+Converted["_Tab1"].ZIndex = 2
+
+Converted["_UIListLayout"].HorizontalFlex = Enum.UIFlexAlignment.Fill
+Converted["_UIListLayout"].ItemLineAlignment = Enum.ItemLineAlignment.Stretch
+Converted["_UIListLayout"].Padding = UDim.new(0.04, 0)
+Converted["_UIListLayout"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIListLayout"].Parent = Converted["_Tab1"]
+
+Converted["_ButtonFrame"].BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Converted["_ButtonFrame"].BackgroundTransparency = 0.45
+Converted["_ButtonFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ButtonFrame"].BorderSizePixel = 0
+Converted["_ButtonFrame"].Position = UDim2.new(0.1089, 0, 0, 0)
+Converted["_ButtonFrame"].Size = UDim2.new(1, 0, 0.2943, 0)
+Converted["_ButtonFrame"].Name = "ButtonFrame"
+Converted["_ButtonFrame"].Parent = Converted["_Tab1"]
+
+Converted["_UICorner1"].CornerRadius = UDim.new(0.2, 0)
+Converted["_UICorner1"].Parent = Converted["_ButtonFrame"]
+
+Converted["_ButtonsMainFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ButtonsMainFrame"].BackgroundTransparency = 1
+Converted["_ButtonsMainFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ButtonsMainFrame"].BorderSizePixel = 0
+Converted["_ButtonsMainFrame"].Position = UDim2.new(0.0427, 0, 0.0619, 0)
+Converted["_ButtonsMainFrame"].Size = UDim2.new(0.9107, 0, 0.8711, 0)
+Converted["_ButtonsMainFrame"].Name = "ButtonsMainFrame"
+Converted["_ButtonsMainFrame"].Parent = Converted["_ButtonFrame"]
+
+Converted["_UIListLayout1"].ItemLineAlignment = Enum.ItemLineAlignment.Center
+Converted["_UIListLayout1"].Padding = UDim.new(0.09, 0)
+Converted["_UIListLayout1"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIListLayout1"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout1"].Parent = Converted["_ButtonsMainFrame"]
+
+Converted["_Store"].Font = Enum.Font.GothamBold
+Converted["_Store"].Text = "Store"
+Converted["_Store"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Store"].TextScaled = true
+Converted["_Store"].TextSize = 14
+Converted["_Store"].TextWrapped = true
+Converted["_Store"].BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+Converted["_Store"].BackgroundTransparency = 0.45
+Converted["_Store"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Store"].BorderSizePixel = 0
+Converted["_Store"].Position = UDim2.new(0.0266, 0, 0, 0)
+Converted["_Store"].Size = UDim2.new(0.9467, 0, 0.2676, 0)
+Converted["_Store"].Name = "Store"
+Converted["_Store"].Parent = Converted["_ButtonsMainFrame"]
+
+Converted["_UICorner2"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner2"].Parent = Converted["_Store"]
+
+Converted["_EnterItem"].CursorPosition = -1
+Converted["_EnterItem"].Font = Enum.Font.GothamBold
+Converted["_EnterItem"].PlaceholderText = "Enter Item"
+Converted["_EnterItem"].Text = ""
+Converted["_EnterItem"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_EnterItem"].TextScaled = true
+Converted["_EnterItem"].TextSize = 14
+Converted["_EnterItem"].TextWrapped = true
+Converted["_EnterItem"].BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+Converted["_EnterItem"].BackgroundTransparency = 0.45
+Converted["_EnterItem"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_EnterItem"].BorderSizePixel = 0
+Converted["_EnterItem"].LayoutOrder = 4
+Converted["_EnterItem"].Position = UDim2.new(0.0265, 0, 0.3599, 0)
+Converted["_EnterItem"].Size = UDim2.new(0.947, 0, 0.2679, 0)
+Converted["_EnterItem"].Name = "EnterItem"
+Converted["_EnterItem"].Parent = Converted["_ButtonsMainFrame"]
+
+Converted["_UICorner3"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner3"].Parent = Converted["_EnterItem"]
+
+Converted["_StoreAllItems"].Font = Enum.Font.GothamBold
+Converted["_StoreAllItems"].Text = "Store All Items"
+Converted["_StoreAllItems"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_StoreAllItems"].TextScaled = true
+Converted["_StoreAllItems"].TextSize = 14
+Converted["_StoreAllItems"].TextWrapped = true
+Converted["_StoreAllItems"].BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+Converted["_StoreAllItems"].BackgroundTransparency = 0.45
+Converted["_StoreAllItems"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_StoreAllItems"].BorderSizePixel = 0
+Converted["_StoreAllItems"].Position = UDim2.new(0.0266, 0, 0, 0)
+Converted["_StoreAllItems"].Size = UDim2.new(0.9467, 0, 0.2676, 0)
+Converted["_StoreAllItems"].Name = "StoreAllItems"
+Converted["_StoreAllItems"].Parent = Converted["_ButtonsMainFrame"]
+
+Converted["_UICorner4"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner4"].Parent = Converted["_StoreAllItems"]
+
+Converted["_ButtonFrame1"].BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Converted["_ButtonFrame1"].BackgroundTransparency = 0.45
+Converted["_ButtonFrame1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ButtonFrame1"].BorderSizePixel = 0
+Converted["_ButtonFrame1"].Position = UDim2.new(0.1089, 0, 0.3343, 0)
+Converted["_ButtonFrame1"].Size = UDim2.new(1, 0, 0.2943, 0)
+Converted["_ButtonFrame1"].Name = "ButtonFrame1"
+Converted["_ButtonFrame1"].Parent = Converted["_Tab1"]
+
+Converted["_UICorner5"].CornerRadius = UDim.new(0.2, 0)
+Converted["_UICorner5"].Parent = Converted["_ButtonFrame1"]
+
+Converted["_ButtonsMainFrame1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_ButtonsMainFrame1"].BackgroundTransparency = 1
+Converted["_ButtonsMainFrame1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ButtonsMainFrame1"].BorderSizePixel = 0
+Converted["_ButtonsMainFrame1"].Position = UDim2.new(0.0427, 0, 0.0619, 0)
+Converted["_ButtonsMainFrame1"].Size = UDim2.new(0.9107, 0, 0.8711, 0)
+Converted["_ButtonsMainFrame1"].Name = "ButtonsMainFrame1"
+Converted["_ButtonsMainFrame1"].Parent = Converted["_ButtonFrame1"]
+
+Converted["_UIListLayout2"].ItemLineAlignment = Enum.ItemLineAlignment.Center
+Converted["_UIListLayout2"].Padding = UDim.new(0.09, 0)
+Converted["_UIListLayout2"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIListLayout2"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout2"].Parent = Converted["_ButtonsMainFrame1"]
+
+Converted["_TeleportItemToMe"].Font = Enum.Font.GothamBold
+Converted["_TeleportItemToMe"].Text = "Teleport Item"
+Converted["_TeleportItemToMe"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TeleportItemToMe"].TextScaled = true
+Converted["_TeleportItemToMe"].TextSize = 14
+Converted["_TeleportItemToMe"].TextWrapped = true
+Converted["_TeleportItemToMe"].BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+Converted["_TeleportItemToMe"].BackgroundTransparency = 0.45
+Converted["_TeleportItemToMe"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TeleportItemToMe"].BorderSizePixel = 0
+Converted["_TeleportItemToMe"].Position = UDim2.new(0.0266, 0, 0, 0)
+Converted["_TeleportItemToMe"].Size = UDim2.new(0.9467, 0, 0.2676, 0)
+Converted["_TeleportItemToMe"].Name = "TeleportItemToMe"
+Converted["_TeleportItemToMe"].Parent = Converted["_ButtonsMainFrame1"]
+
+Converted["_UICorner6"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner6"].Parent = Converted["_TeleportItemToMe"]
+
+Converted["_EnterItem1"].Font = Enum.Font.GothamBold
+Converted["_EnterItem1"].PlaceholderText = "Enter Item"
+Converted["_EnterItem1"].Text = ""
+Converted["_EnterItem1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_EnterItem1"].TextScaled = true
+Converted["_EnterItem1"].TextSize = 14
+Converted["_EnterItem1"].TextWrapped = true
+Converted["_EnterItem1"].BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+Converted["_EnterItem1"].BackgroundTransparency = 0.45
+Converted["_EnterItem1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_EnterItem1"].BorderSizePixel = 0
+Converted["_EnterItem1"].LayoutOrder = 4
+Converted["_EnterItem1"].Position = UDim2.new(0.0265, 0, 0.3599, 0)
+Converted["_EnterItem1"].Size = UDim2.new(0.947, 0, 0.2679, 0)
+Converted["_EnterItem1"].Name = "EnterItem1"
+Converted["_EnterItem1"].Parent = Converted["_ButtonsMainFrame1"]
+
+Converted["_UICorner7"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner7"].Parent = Converted["_EnterItem1"]
+
+Converted["_TeleportAllItemsToMe"].Font = Enum.Font.GothamBold
+Converted["_TeleportAllItemsToMe"].Text = "Teleport All items"
+Converted["_TeleportAllItemsToMe"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_TeleportAllItemsToMe"].TextScaled = true
+Converted["_TeleportAllItemsToMe"].TextSize = 14
+Converted["_TeleportAllItemsToMe"].TextWrapped = true
+Converted["_TeleportAllItemsToMe"].BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+Converted["_TeleportAllItemsToMe"].BackgroundTransparency = 0.45
+Converted["_TeleportAllItemsToMe"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_TeleportAllItemsToMe"].BorderSizePixel = 0
+Converted["_TeleportAllItemsToMe"].Position = UDim2.new(0.0266, 0, 0, 0)
+Converted["_TeleportAllItemsToMe"].Size = UDim2.new(0.9467, 0, 0.2676, 0)
+Converted["_TeleportAllItemsToMe"].Name = "TeleportAllItemsToMe"
+Converted["_TeleportAllItemsToMe"].Parent = Converted["_ButtonsMainFrame1"]
+
+Converted["_UICorner8"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner8"].Parent = Converted["_TeleportAllItemsToMe"]
+
+Converted["_ChooseTab"].BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Converted["_ChooseTab"].BackgroundTransparency = 0.35
+Converted["_ChooseTab"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ChooseTab"].BorderSizePixel = 0
+Converted["_ChooseTab"].Position = UDim2.new(-0.1564, 0, 0.0338, 0)
+Converted["_ChooseTab"].Size = UDim2.new(0.1263, 0, 0.9289, 0)
+Converted["_ChooseTab"].Name = "ChooseTab"
+Converted["_ChooseTab"].Parent = Converted["_Main"]
+
+Converted["_UICorner9"].CornerRadius = UDim.new(1, 0)
+Converted["_UICorner9"].Parent = Converted["_ChooseTab"]
+
+-- --- BLUR (Corrected and Restored) ---
+Converted["_Blur"].Image = "rbxassetid://8266441057"
+Converted["_Blur"].ImageTransparency = 0.63
+Converted["_Blur"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Blur"].BackgroundTransparency = 1
+Converted["_Blur"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Blur"].BorderSizePixel = 0
+Converted["_Blur"].Position = UDim2.new(0, 0, 0, 0)
+Converted["_Blur"].Size = UDim2.new(1, 0, 1, 0)
+Converted["_Blur"].Name = "Blur"
+Converted["_Blur"].Parent = Converted["_Main"]
+Converted["_Blur"].ZIndex = 0
+
+Converted["_UICorner10"].CornerRadius = UDim.new(1, 0)
+Converted["_UICorner10"].Parent = Converted["_Blur"]
+
+Converted["_ClickOn"].BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Converted["_ClickOn"].BackgroundTransparency = 1
+Converted["_ClickOn"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ClickOn"].BorderSizePixel = 0
+Converted["_ClickOn"].Position = UDim2.new(0.8434, 0, 0.0258, 0)
+Converted["_ClickOn"].Size = UDim2.new(-0.6868, 0, 0.9689, 0)
+Converted["_ClickOn"].Name = "ClickOn"
+Converted["_ClickOn"].Parent = Converted["_ChooseTab"]
+
+Converted["_Tab11"].Image = "rbxassetid://16167590360"
+Converted["_Tab11"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab11"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab11"].BackgroundTransparency = 1
+Converted["_Tab11"].Position = UDim2.new(1.0000006, 0, 0, 0)
+Converted["_Tab11"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab11"].Name = "Tab11"
+Converted["_Tab11"].Parent = Converted["_ClickOn"]
+
+Converted["_UIListLayout3"].HorizontalFlex = Enum.UIFlexAlignment.Fill
+Converted["_UIListLayout3"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+Converted["_UIListLayout3"].SortOrder = Enum.SortOrder.LayoutOrder
+Converted["_UIListLayout3"].Parent = Converted["_ClickOn"]
+
+Converted["_Tab2"].Image = "rbxassetid://16167590360"
+Converted["_Tab2"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab2"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab2"].BackgroundTransparency = 1
+Converted["_Tab2"].Position = UDim2.new(1.0000006, 0, 0.1231, 0)
+Converted["_Tab2"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab2"].Name = "Tab2"
+Converted["_Tab2"].Parent = Converted["_ClickOn"]
+
+Converted["_Tab3"].Image = "rbxassetid://16167590360"
+Converted["_Tab3"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab3"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab3"].BackgroundTransparency = 1
+Converted["_Tab3"].Position = UDim2.new(1.0000006, 0, 0.2463, 0)
+Converted["_Tab3"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab3"].Name = "Tab3"
+Converted["_Tab3"].Parent = Converted["_ClickOn"]
+
+Converted["_Tab4"].Image = "rbxassetid://16167590360"
+Converted["_Tab4"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab4"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab4"].BackgroundTransparency = 1
+Converted["_Tab4"].Position = UDim2.new(1.0000006, 0, 0.3694, 0)
+Converted["_Tab4"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab4"].Name = "Tab4"
+Converted["_Tab4"].Parent = Converted["_ClickOn"]
+
+Converted["_Tab5"].Image = "rbxassetid://16167590360"
+Converted["_Tab5"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab5"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab5"].BackgroundTransparency = 1
+Converted["_Tab5"].Position = UDim2.new(1.0000006, 0, 0.6157, 0)
+Converted["_Tab5"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab5"].Name = "Tab5"
+Converted["_Tab5"].Parent = Converted["_ClickOn"]
+
+Converted["_Tab6"].Image = "rbxassetid://16167590360"
+Converted["_Tab6"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab6"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab6"].BackgroundTransparency = 1
+Converted["_Tab6"].Position = UDim2.new(1.0000006, 0, 0.7388, 0)
+Converted["_Tab6"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab6"].Name = "Tab6"
+Converted["_Tab6"].Parent = Converted["_ClickOn"]
+
+Converted["_Tab7"].Image = "rbxassetid://16167590360"
+Converted["_Tab7"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab7"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab7"].BackgroundTransparency = 1
+Converted["_Tab7"].Position = UDim2.new(1.0000006, 0, 0.862, 0)
+Converted["_Tab7"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab7"].Name = "Tab7"
+Converted["_Tab7"].Parent = Converted["_ClickOn"]
+
+Converted["_Tab8"].Image = "rbxassetid://16167590360"
+Converted["_Tab8"].ImageRectOffset = Vector2.new(195, 302)
+Converted["_Tab8"].ImageRectSize = Vector2.new(37, 36)
+Converted["_Tab8"].BackgroundTransparency = 1
+Converted["_Tab8"].Position = UDim2.new(1.0000006, 0, 0.4926, 0)
+Converted["_Tab8"].Size = UDim2.new(-1, 0, 0.1231, 0)
+Converted["_Tab8"].Name = "Tab8"
+Converted["_Tab8"].Parent = Converted["_ClickOn"]
+
+Converted["_Blur1"].Image = "rbxassetid://8266441057"
+Converted["_Blur1"].ImageTransparency = 0.63
+Converted["_Blur1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Blur1"].BackgroundTransparency = 1
+Converted["_Blur1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Blur1"].BorderSizePixel = 0
+Converted["_Blur1"].Position = UDim2.new(1.6459e-07, 0, -0.0018, 0)
+Converted["_Blur1"].Size = UDim2.new(0.999999642, 0, 1, 0)
+Converted["_Blur1"].Visible = false
+Converted["_Blur1"].Name = "Blur1"
+Converted["_Blur1"].Parent = Converted["_Main"]
+
+Converted["_UICorner11"].CornerRadius = UDim.new(0.1, 0)
+Converted["_UICorner11"].Parent = Converted["_Blur1"]
+
+Converted["_Close"].Font = Enum.Font.GothamBold
+Converted["_Close"].Text = "X"
+Converted["_Close"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Close"].TextScaled = true
+Converted["_Close"].TextSize = 14
+Converted["_Close"].TextWrapped = true
+Converted["_Close"].BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+Converted["_Close"].BackgroundTransparency = 0.45
+Converted["_Close"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Close"].BorderSizePixel = 0
+Converted["_Close"].Position = UDim2.new(1.0139, 0, 0, 0)
+Converted["_Close"].Size = UDim2.new(0.0823, 0, 0.1144, 0)
+Converted["_Close"].Name = "Close"
+Converted["_Close"].Parent = Converted["_Main"]
+
+Converted["_Blur2"].Image = "rbxassetid://8266441057"
+Converted["_Blur2"].ImageTransparency = 0.63
+Converted["_Blur2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Blur2"].BackgroundTransparency = 1
+Converted["_Blur2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Blur2"].BorderSizePixel = 0
+Converted["_Blur2"].Size = UDim2.new(0.999999642, 0, 1, 0)
+Converted["_Blur2"].Name = "Blur2"
+Converted["_Blur2"].Parent = Converted["_Close"]
+Converted["_Blur2"].Visible = false
+
+Converted["_UICorner12"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner12"].Parent = Converted["_Blur2"]
+
+Converted["_UICorner13"].CornerRadius = UDim.new(0.4, 0)
+Converted["_UICorner13"].Parent = Converted["_Close"]
+
+Converted["_UIAspectRatioConstraint"].AspectRatio = 1.1979
+Converted["_UIAspectRatioConstraint"].Parent = Converted["_Main"]
+
+-- --- HELPER FUNCTION FOR PARTIAL NAME MATCHING ---
+local function findItemByPartialName(partialName, itemsFolder)
+    if not itemsFolder then return nil end
+    for _, item in ipairs(itemsFolder:GetChildren()) do
+        if string.find(item.Name:lower(), partialName:lower()) then
+            return item
+        end
+    end
+    return nil
+end
+
+-- --- STORE BUTTON CLICK EVENT ---
+Converted["_Store"].MouseButton1Click:Connect(function()
+    local itemName = Converted["_EnterItem"].Text
+    if itemName and itemName ~= "" then
+        local runtimeItems = game.Workspace:FindFirstChild("RuntimeItems")
+        local item = findItemByPartialName(itemName, runtimeItems)
+
+        if item then
+            local storeItemEvent = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("StoreItem")
+            storeItemEvent:FireServer(item)
+            print("Fired StoreItem event for:", item.Name)
+        else
+            Converted["_Store"].Text = "Item not found"
+            warn("Item not found: " .. itemName)
+            task.delay(3, function()
+                Converted["_Store"].Text = "Store"
+            end)
+        end
+    else
+        warn("Please enter a valid item name!")
+    end
+end)
+
+-- --- STORE ALL ITEMS BUTTON CLICK EVENT (MODIFIED) ---
+Converted["_StoreAllItems"].MouseButton1Click:Connect(function()
+    local runtimeItems = game.Workspace:FindFirstChild("RuntimeItems")
+    if runtimeItems then
+        local storeItemEvent = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("StoreItem")
+        for _, item in ipairs(runtimeItems:GetChildren()) do
+            -- Fire the SAME StoreItem event for EACH item
+            storeItemEvent:FireServer(item)
+            print("Fired StoreItem event for:", item.Name)
+        end
+    else
+        warn("RuntimeItems folder not found!")
+    end
+end)
+
+-- --- TELEPORT ITEM TO ME BUTTON CLICK EVENT (CLIENT-SIDE TELEPORT) ---
+Converted["_TeleportItemToMe"].MouseButton1Click:Connect(function()
+    local itemName = Converted["_EnterItem1"].Text
+    if itemName and itemName ~= "" then
+        local runtimeItems = game.Workspace:FindFirstChild("RuntimeItems")
+        local item = findItemByPartialName(itemName, runtimeItems)
+
+        if item then
+            local character = player.Character
+            if character then
+                local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+                if humanoidRootPart then
+                    if item:IsA("Model") and item.PrimaryPart then
+                        item:MoveTo(humanoidRootPart.Position + Vector3.new(0, 2, 0))
+                    elseif item:IsA("BasePart") then
+                        item.CFrame = humanoidRootPart.CFrame * CFrame.new(0, 2, 0)
+                    else
+                        warn("Item is not a Model with a PrimaryPart or a BasePart.")
+                    end
+                else
+                                        warn("HumanoidRootPart not found in player's character!")
+                end
+            else
+                warn("Player's character not found!")
+            end
+        else
+            Converted["_TeleportItemToMe"].Text = "Item not found"
+            warn("Item not found: " .. itemName)
+            task.delay(3, function()
+                Converted["_TeleportItemToMe"].Text = "Teleport Item"
+            end)
+        end
+    else
+        warn("Please enter a valid item name!")
+    end
+end)
+
+-- --- TELEPORT ALL ITEMS TO ME BUTTON CLICK EVENT (CLIENT-SIDE TELEPORT) ---
+Converted["_TeleportAllItemsToMe"].MouseButton1Click:Connect(function()
+    local runtimeItems = game.Workspace:FindFirstChild("RuntimeItems")
+    if runtimeItems then
+        local character = player.Character
+        if character then
+            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+            if humanoidRootPart then
+                local offset = 0
+                for _, item in ipairs(runtimeItems:GetChildren()) do
+                    if item:IsA("Model") and item.PrimaryPart then
+                        item:MoveTo(humanoidRootPart.Position + Vector3.new(offset, 2, 0))
+                        offset = offset + 3
+                    elseif item:IsA("BasePart") then
+                        item.CFrame = humanoidRootPart.CFrame * CFrame.new(offset, 2, 0)
+                        offset = offset + 3
+                    else
+                        warn("Item is not a Model with a PrimaryPart or a BasePart.")
+                    end
+                end
+            else
+                warn("HumanoidRootPart not found in player's character!")
+            end
+        else
+            warn("Player's character not found!")
+        end
+    else
+        warn("RuntimeItems folder not found!")
+    end
+end)
+
+-- --- CLOSE BUTTON ---
+Converted["_Close"].MouseButton1Click:Connect(function()
+	Converted["_GUI"]:Destroy()
+end)
+
+-- --- PLACEHOLDER TEXT ---
+Converted["_EnterItem"].FocusLost:Connect(function(enterPressed)
+    if Converted["_EnterItem"].Text == "" then
+        Converted["_EnterItem"].PlaceholderText = "Enter Item"
+		Converted["_EnterItem"].TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end)
+
+Converted["_EnterItem"].Focused:Connect(function()
+    if Converted["_EnterItem"].Text == "" then
+        Converted["_EnterItem"].PlaceholderText = ""
+		Converted["_EnterItem"].TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end)
+
+-- --- PLACEHOLDER TEXT (FOR _EnterItem1) ---
+Converted["_EnterItem1"].FocusLost:Connect(function(enterPressed)
+    if Converted["_EnterItem1"].Text == "" then
+        Converted["_EnterItem1"].PlaceholderText = "Enter Item"
+		Converted["_EnterItem1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end)
+
+Converted["_EnterItem1"].Focused:Connect(function()
+    if Converted["_EnterItem1"].Text == "" then
+        Converted["_EnterItem1"].PlaceholderText = ""
+		Converted["_EnterItem1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end)
